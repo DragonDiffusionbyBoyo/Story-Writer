@@ -3,6 +3,7 @@ from tkinter import filedialog, scrolledtext
 import requests
 import json
 
+# Functions (unchanged)
 def load_file():
     file_path = filedialog.askopenfilename(filetypes=[("Text Files", "*.txt")])
     if file_path:
@@ -83,48 +84,72 @@ def generate_text():
         generated_text = f"Error: {e}"
     text_box.insert(tk.END, "\n\n" + generated_text)
 
-# GUI Setup
+# GUI Setup with Styling
 tk_root = tk.Tk()
 tk_root.title("Ollama Book Writer")
+tk_root.geometry("600x700")  # Set a fixed window size
+tk_root.configure(bg="#f0f0f0")  # Light gray background
 
-file_label = tk.Label(tk_root, text="No file loaded")
-file_label.pack()
+# Main Frame for Organization
+main_frame = tk.Frame(tk_root, bg="#f0f0f0", padx=10, pady=10)
+main_frame.grid(row=0, column=0, sticky="nsew")
 
-load_button = tk.Button(tk_root, text="Load Story File", command=load_file)
-load_button.pack()
+# Title Label
+title_label = tk.Label(main_frame, text="Ollama Book Writer", font=("Arial", 16, "bold"), bg="#f0f0f0", fg="#2c3e50")
+title_label.grid(row=0, column=0, columnspan=2, pady=(0, 15))
 
-save_button = tk.Button(tk_root, text="Save Story File", command=save_file)
-save_button.pack()
+# File Management Section
+file_frame = tk.LabelFrame(main_frame, text="Story File Management", font=("Arial", 12), bg="#f0f0f0", fg="#2c3e50", padx=10, pady=10)
+file_frame.grid(row=1, column=0, columnspan=2, sticky="ew", padx=5, pady=5)
 
-# New File Selectors
+file_label = tk.Label(file_frame, text="No file loaded", bg="#f0f0f0", fg="#34495e")
+file_label.grid(row=0, column=0, columnspan=2, pady=(0, 10))
+
+load_button = tk.Button(file_frame, text="Load Story File", command=load_file, bg="#3498db", fg="white", padx=5, pady=2)
+load_button.grid(row=1, column=0, padx=5, pady=5)
+
+save_button = tk.Button(file_frame, text="Save Story File", command=save_file, bg="#3498db", fg="white", padx=5, pady=2)
+save_button.grid(row=1, column=1, padx=5, pady=5)
+
+# Additional File Selectors Section
+selector_frame = tk.LabelFrame(main_frame, text="Additional Inputs", font=("Arial", 12), bg="#f0f0f0", fg="#2c3e50", padx=10, pady=10)
+selector_frame.grid(row=2, column=0, columnspan=2, sticky="ew", padx=5, pady=5)
+
 # 1. Main Characters
-tk.Label(tk_root, text="Main Characters File:").pack()
-characters_label = tk.Label(tk_root, text="No file selected")
-characters_label.pack()
-tk.Button(tk_root, text="Select Characters File", command=lambda: select_file(characters_label)).pack()
+tk.Label(selector_frame, text="Main Characters File:", bg="#f0f0f0", fg="#34495e").grid(row=0, column=0, sticky="e", padx=5, pady=2)
+characters_label = tk.Label(selector_frame, text="No file selected", bg="#f0f0f0", fg="#34495e")
+characters_label.grid(row=0, column=1, sticky="w", padx=5, pady=2)
+tk.Button(selector_frame, text="Select", command=lambda: select_file(characters_label), bg="#2ecc71", fg="white", padx=5, pady=2).grid(row=0, column=2, padx=5, pady=2)
 
-# 2. Simple Storyboard
-tk.Label(tk_root, text="Storyboard File:").pack()
-storyboard_label = tk.Label(tk_root, text="No file selected")
-storyboard_label.pack()
-tk.Button(tk_root, text="Select Storyboard File", command=lambda: select_file(storyboard_label)).pack()
+# 2. Storyboard
+tk.Label(selector_frame, text="Storyboard File:", bg="#f0f0f0", fg="#34495e").grid(row=1, column=0, sticky="e", padx=5, pady=2)
+storyboard_label = tk.Label(selector_frame, text="No file selected", bg="#f0f0f0", fg="#34495e")
+storyboard_label.grid(row=1, column=1, sticky="w", padx=5, pady=2)
+tk.Button(selector_frame, text="Select", command=lambda: select_file(storyboard_label), bg="#2ecc71", fg="white", padx=5, pady=2).grid(row=1, column=2, padx=5, pady=2)
 
 # 3. What Should Happen Next
-tk.Label(tk_root, text="What Should Happen Next File:").pack()
-prompt_label = tk.Label(tk_root, text="No file selected")
-prompt_label.pack()
-tk.Button(tk_root, text="Select Prompt File", command=lambda: select_file(prompt_label)).pack()
+tk.Label(selector_frame, text="What Should Happen Next File:", bg="#f0f0f0", fg="#34495e").grid(row=2, column=0, sticky="e", padx=5, pady=2)
+prompt_label = tk.Label(selector_frame, text="No file selected", bg="#f0f0f0", fg="#34495e")
+prompt_label.grid(row=2, column=1, sticky="w", padx=5, pady=2)
+tk.Button(selector_frame, text="Select", command=lambda: select_file(prompt_label), bg="#2ecc71", fg="white", padx=5, pady=2).grid(row=2, column=2, padx=5, pady=2)
 
 # 4. Other Important Information
-tk.Label(tk_root, text="Other Important Info File:").pack()
-other_info_label = tk.Label(tk_root, text="No file selected")
-other_info_label.pack()
-tk.Button(tk_root, text="Select Other Info File", command=lambda: select_file(other_info_label)).pack()
+tk.Label(selector_frame, text="Other Important Info File:", bg="#f0f0f0", fg="#34495e").grid(row=3, column=0, sticky="e", padx=5, pady=2)
+other_info_label = tk.Label(selector_frame, text="No file selected", bg="#f0f0f0", fg="#34495e")
+other_info_label.grid(row=3, column=1, sticky="w", padx=5, pady=2)
+tk.Button(selector_frame, text="Select", command=lambda: select_file(other_info_label), bg="#2ecc71", fg="white", padx=5, pady=2).grid(row=3, column=2, padx=5, pady=2)
 
-generate_button = tk.Button(tk_root, text="Generate Text", command=generate_text)
-generate_button.pack()
+# Generate Button
+generate_button = tk.Button(main_frame, text="Generate Text", command=generate_text, bg="#e74c3c", fg="white", padx=10, pady=5, font=("Arial", 10, "bold"))
+generate_button.grid(row=3, column=0, columnspan=2, pady=10)
 
-text_box = scrolledtext.ScrolledText(tk_root, wrap=tk.WORD, width=80, height=20)
-text_box.pack()
+# Text Box
+text_box = scrolledtext.ScrolledText(main_frame, wrap=tk.WORD, width=70, height=20, bg="white", fg="#2c3e50", font=("Arial", 10))
+text_box.grid(row=4, column=0, columnspan=2, pady=10, padx=5)
+
+# Configure grid weights for responsiveness
+tk_root.grid_rowconfigure(0, weight=1)
+tk_root.grid_columnconfigure(0, weight=1)
+main_frame.grid_rowconfigure(4, weight=1)
 
 tk_root.mainloop()
