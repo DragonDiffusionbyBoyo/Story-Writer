@@ -1,0 +1,42 @@
+{
+  "chapters": [
+    {
+      "number": 8,
+      "title": "The Syrup Siege",
+      "setting": "A sticky battlefield of pancakes",
+      "characters_present": ["Bingo", "Waffle"],
+      "sections": [
+        {"task": "Bingo rallies the chickens against syrup cannons", "word_count": 500, "instructions": "Show her pluckiness"},
+        {"task": "Waffle gets stuck, whines about his batter", "word_count": 400, "instructions": "Add melodrama"}
+      ],
+      "goal": "Bingo takes charge, Waffle flounders"
+    },
+    {
+      "number": 9,
+      "title": "Feathers vs. Flapjacks",
+      "setting": "A diner in chaos",
+      "characters_present": ["Bingo", "Waffle"],
+      "sections": [
+        {"task": "Bingo negotiates with a rogue toaster", "word_count": 400, "instructions": "Witty banter"},
+        {"task": "Waffle accidentally starts a butter avalanche", "word_count": 500, "instructions": "Slapstick chaos"}
+      ],
+      "goal": "Escalating absurdity"
+    },
+    {
+      "number": 10,
+      "title": "The Great Breakfast Brawl",
+      "setting": "A breakfast dimension",
+      "characters_present": ["Bingo", "Waffle"],
+      "sections": [
+        {"task": "Bingo rides a bacon dragon", "word_count": 500, "instructions": "Epic and ridiculous"},
+        {"task": "Waffle crowns himself Syrup King", "word_count": 400, "instructions": "Over-the-top glory"}
+      ],
+      "goal": "A tasty finale"
+    }
+  ],
+  "notes": {
+    "tone": "Silly and absurd",
+    "word_count": "Aim for ~2,000 words per chapter",
+    "focus": "Bingo’s bravery, Waffle’s whining"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "Bingo": {
+    "full_name": "Bingo Bawksworth",
+    "role": "Fearless chicken leader",
+    "traits": ["Brave", "Clucky", "Sassy"],
+    "quotes": ["Cluck first, ask later!", "This sky’s gone bonkers!"],
+    "arc": "From farmyard hen to breakfast hero",
+    "details": "Fluffy feathers, tiny crown"
+  },
+  "Waffle": {
+    "full_name": "Waffle W. Crispinton",
+    "role": "Whiny sidekick",
+    "traits": ["Crispy", "Dramatic", "Sticky"],
+    "quotes": ["My batter’s ruined!", "Syrup’s my destiny!"],
+    "arc": "From snack to reluctant royalty",
+    "details": "Golden brown, soggy edges"
+  }
+}
