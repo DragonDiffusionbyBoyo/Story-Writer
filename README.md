@@ -10,8 +10,8 @@ Welcome to **Ollama Book Writer**, a Python tool that uses the Ollama API to cra
 ## Features
 
 - **Story Tab**: Generate chapters (2000+ words) based on a JSON storyboard, starting from an initial text file.
-- **World Building Tab**: Expand your world’s characters, places, or lore with custom prompts.
-- **Story Review Tab**: Get a detailed summary, analysis, and improvement suggestions for your story.
+- **WIP World Building Tab**: Expand your world’s characters, places, or lore with custom prompts.
+- **WIP Story Review Tab**: Get a detailed summary, analysis, and improvement suggestions for your story.
 - **Fixer Tab**: Fix language issues or align your story to its storyboard.
 - **GUI**: A sleek Tkinter interface to manage files and generation tasks.
 
