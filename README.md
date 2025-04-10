@@ -1,72 +1,160 @@
-Here’s the entire README content in a single, unformatted text block for easy copying. I've removed all Markdown-specific formatting (like headers and code blocks) to ensure it pastes cleanly:
 
----
 
-Ollama Book Writer
+### README.md
 
-A Python-based GUI application built with Tkinter to assist writers in generating, reviewing, and expanding stories and world-building content using the Ollama API. The tool features three main tabs: Story, World Building, and Story Review, each designed to streamline the creative writing process.
+```markdown
+# Ollama Book Writer
 
-Installation Instructions for Visual Studio Code
+Welcome to **Ollama Book Writer**, a Python tool that uses the Ollama API to craft, enhance, review, and fix stories! Whether you're spinning a tale of interdimensional chickens or gritty detective dramas, this script has you covered. Feed it a storyboard, characters, and some instructions, and watch it churn out chapters faster than you can say "plot twist."
 
-To set up and run this project in Visual Studio Code, follow these steps:
+## Features
 
-1. Install Visual Studio Code - Download and install VS Code from the official website (https://code.visualstudio.com/). Follow the installation prompts for your operating system (Windows, macOS, or Linux).
+- **Story Tab**: Generate chapters (2000+ words) based on a JSON storyboard, starting from an initial text file.
+- **World Building Tab**: Expand your world’s characters, places, or lore with custom prompts.
+- **Story Review Tab**: Get a detailed summary, analysis, and improvement suggestions for your story.
+- **Fixer Tab**: Fix language issues or align your story to its storyboard.
+- **GUI**: A sleek Tkinter interface to manage files and generation tasks.
 
-2. Install Python - Ensure Python 3.6+ is installed on your system. Download it from python.org (https://www.python.org/downloads/) if needed. Verify the installation by running python --version (or python3 --version on some systems) in your terminal.
-
-3. Install the Python Extension for VS Code - Open VS Code. Go to the Extensions view by clicking the Extensions icon in the Activity Bar on the side (or press Ctrl+Shift+X / Cmd+Shift+X). Search for "Python" by Microsoft. Click "Install" to add the extension, which provides IntelliSense, linting, debugging, and more for Python development.
-
-4. Set Up Your Environment in VS Code - Open the folder containing your project (e.g., File > Open Folder). Select the Python interpreter: Press Ctrl+Shift+P (or Cmd+Shift+P), type "Python: Select Interpreter," and choose your installed Python version.
-
-5. Install Required Python Libraries - Open a terminal in VS Code (Terminal > New Terminal). Run the following command to install the necessary dependencies: pip install requests tkinter. Note: tkinter is typically included with Python, but ensure it’s available by running python -m tkinter in the terminal (a small window should appear).
-
-6. Install Ollama - This script interacts with a local Ollama API at http://localhost:11434/api/generate. Install Ollama by following the instructions on the Ollama GitHub page (https://github.com/jmorganca/ollama). Start the Ollama server locally before running the script: ollama serve.
-
-Overview
-
-The Ollama Book Writer is a desktop application designed for writers to: Generate new story content (before or after existing text). Check story consistency. Expand world-building details (characters, places, lore). Review stories with summaries, structural analysis, and improvement suggestions. The app uses the Ollama API with specific models (HammerAI/mythomax-l2:13b-q4_K_M and nous-hermes2-mixtral:8x7b-dpo-q4_K_M) to process text and generate responses.
-
-Features
-
-Story Tab - Load/Save Story Files: Import and export .txt files containing your story. Additional Inputs: Optionally include files for characters, storyboard, instructions, and other info. Tasks: Generate a page before or after the loaded story. Check consistency (e.g., character details, plot coherence). Generate ~20,000 words for a prequel in 2,000-word chunks (for "before" task). Output: Displays generated text in a scrollable text box.
-
-World Building Tab - Load/Save World Files: Manage .txt files with world-building content. Expansion Prompt: Add instructions to expand characters, places, or lore. Output: Appends generated details to the existing content.
-
-Story Review Tab - Load Story File: Import a story for review. Generate Review: Produces a ~1,000-word summary, structural analysis, and improvement suggestions.
-
-Prerequisites
+## Prerequisites
 
 - Python 3.6+
-- Tkinter (included with most Python installations)
-- Requests library (pip install requests)
-- Ollama installed and running locally (http://localhost:11434)
-- Compatible Ollama models: HammerAI/mythomax-l2:13b-q4_K_M, nous-hermes2-mixtral:8x7b-dpo-q4_K_M
+- Required libraries: `tkinter`, `requests`, `json`, `os`, `logging`, `langdetect`, `googletrans==3.1.0a0`
+- Ollama server running locally (`http://localhost:11434`)
 
-How to Run
+Install dependencies:
+```bash
+pip install requests langdetect googletrans==3.1.0a0
+```
 
-1. Clone or Download the Script - Save the script as ollama_book_writer.py (or any name you prefer).
+## Setup
 
-2. Start the Ollama Server - In a terminal, run: ollama serve. Ensure the server is running at http://localhost:11434.
+1. Clone this repository:
+   ```bash
+   https://github.com/DragonDiffusionbyBoyo/Story-Writer
+   cd ollama-book-writer
+   ```
+2. Start your Ollama server:
+   ```bash
+   ollama serve
+   ```
+3. Run the script:
+   ```bash
+   python ollama_book_writer.py
+   ```
 
-3. Run the Application - Open a terminal in the script’s directory and execute: python ollama_book_writer.py. The GUI window titled "Ollama Book Writer" will appear.
+## Usage
 
-4. Usage - Navigate between tabs using the notebook interface. Load files, select tasks, and click "Generate" buttons to process your content. Save your work as needed.
+1. **Load Files**: Use the GUI to load your initial story, storyboard (JSON), characters (JSON), instructions (TXT), and other info (TXT).
+2. **Select Model**: Choose an Ollama model from the dropdown (fetches available models automatically).
+3. **Generate**: Click "Generate Text" to write chapters, "Enhance Story" to double the size, or explore other tabs.
+4. **Save**: Export your masterpiece!
 
-Troubleshooting
+Files are saved to a temp folder (default: current directory) as `temp_chapter_X.txt` or `temp_story_final.txt`.
 
-- Ollama API Errors: Ensure the Ollama server is running and the correct models are installed. Check the terminal for error messages.
-- Tkinter Not Found: Verify Tkinter is installed (python -m tkinter). On Linux, you may need sudo apt-get install python3-tk.
-- No Text Generated: Confirm your input files are valid and the API is responding correctly.
+## Example Files
 
-Contributing
+Here’s a silly story about **Bingo the Chicken** and **Waffle the Waffle** to get you started:
 
-Feel free to fork this project, submit pull requests, or suggest improvements via issues. Contributions to enhance functionality, UI, or error handling are welcome!
+### 1. Initial Story File (`initial_story.txt`)
+```
+Bingo the Chicken clucked furiously at the sky, wondering why it glowed purple. Waffle the Waffle, her crispy companion, just sighed and dripped syrup.
+```
 
-License
+### 2. Storyboard File (`storyboard.json`)
+```json
+{
+  "chapters": [
+    {
+      "number": 8,
+      "title": "The Syrup Siege",
+      "setting": "A sticky battlefield of pancakes",
+      "characters_present": ["Bingo", "Waffle"],
+      "sections": [
+        {"task": "Bingo rallies the chickens against syrup cannons", "word_count": 500, "instructions": "Show her pluckiness"},
+        {"task": "Waffle gets stuck, whines about his batter", "word_count": 400, "instructions": "Add melodrama"}
+      ],
+      "goal": "Bingo takes charge, Waffle flounders"
+    },
+    {
+      "number": 9,
+      "title": "Feathers vs. Flapjacks",
+      "setting": "A diner in chaos",
+      "characters_present": ["Bingo", "Waffle"],
+      "sections": [
+        {"task": "Bingo negotiates with a rogue toaster", "word_count": 400, "instructions": "Witty banter"},
+        {"task": "Waffle accidentally starts a butter avalanche", "word_count": 500, "instructions": "Slapstick chaos"}
+      ],
+      "goal": "Escalating absurdity"
+    },
+    {
+      "number": 10,
+      "title": "The Great Breakfast Brawl",
+      "setting": "A breakfast dimension",
+      "characters_present": ["Bingo", "Waffle"],
+      "sections": [
+        {"task": "Bingo rides a bacon dragon", "word_count": 500, "instructions": "Epic and ridiculous"},
+        {"task": "Waffle crowns himself Syrup King", "word_count": 400, "instructions": "Over-the-top glory"}
+      ],
+      "goal": "A tasty finale"
+    }
+  ],
+  "notes": {
+    "tone": "Silly and absurd",
+    "word_count": "Aim for ~2,000 words per chapter",
+    "focus": "Bingo’s bravery, Waffle’s whining"
+  }
+}
+```
 
-This project is open-source and available under the MIT License (https://opensource.org/licenses/MIT).
+### 3. Characters File (`characters.json`)
+```json
+{
+  "Bingo": {
+    "full_name": "Bingo Bawksworth",
+    "role": "Fearless chicken leader",
+    "traits": ["Brave", "Clucky", "Sassy"],
+    "quotes": ["Cluck first, ask later!", "This sky’s gone bonkers!"],
+    "arc": "From farmyard hen to breakfast hero",
+    "details": "Fluffy feathers, tiny crown"
+  },
+  "Waffle": {
+    "full_name": "Waffle W. Crispinton",
+    "role": "Whiny sidekick",
+    "traits": ["Crispy", "Dramatic", "Sticky"],
+    "quotes": ["My batter’s ruined!", "Syrup’s my destiny!"],
+    "arc": "From snack to reluctant royalty",
+    "details": "Golden brown, soggy edges"
+  }
+}
+```
+
+### 4. Instructions File (`instructions.txt`)
+```
+Focus on absurd humor and breakfast puns. Keep Bingo bold and Waffle over-the-top whiny. Each chapter should escalate the silliness while sticking to the storyboard’s goals. Use vivid food imagery!
+```
+
+### 5. Other Important Information (`other_info.txt`)
+```
+The world is a chaotic breakfast dimension where food fights for dominance. Purple skies signal the Breakfast Overlord’s return. Bingo and Waffle are the last hope against a syrup-soaked doom.
+```
+
+## Contributing
+
+Feel free to fork, tweak, or add your own absurd stories! Submit a pull request with your changes.
+
+## License
+
+MIT License - free to use, modify, and share. Happy writing!
+```
 
 ---
 
-All of this was inspired by Drift Johnson: https://www.youtube.com/@ScuffedEpoch/videos
-https://www.scuffedepoch.com/
+### Notes on Example Files
+
+- **Initial Story**: Two lines as requested, setting up Bingo and Waffle.
+- **Storyboard**: Chapters 8-10 with random, silly tasks, adhering to the JSON format from your example.
+- **Characters**: Two characters in the same JSON structure, with fun traits and arcs.
+- **Instructions**: Derived from the script’s use of `instruction_text` in prompts, tailored to the silly story.
+- **Other Info**: Adds world context, as used in the script’s `other_info_text`.
+
+Let me know if you’d like me to refine the code fixes or tweak anything else before you push to GitHub!
