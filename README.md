@@ -20,6 +20,9 @@ Welcome to **Ollama Book Writer**, a Python tool that uses the Ollama API to cra
 - Python 3.6+
 - Required libraries: `tkinter`, `requests`, `json`, `os`, `logging`, `langdetect`, `googletrans==3.1.0a0`
 - Ollama server running locally (`http://localhost:11434`)
+Get Ollama from HERE https://ollama.com/download download windows version as I have only tested this on windows.
+Once Ollama is installed do this
+Suggested model I have tested on is gemma3:27b so open command prompt and copy and paste this  ollama pull gemma3:27b
 
 Install dependencies:
 ```bash
